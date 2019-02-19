@@ -4,7 +4,7 @@ session_start();
 
 function mostrarFacturas($db) {
 	
-	$selectFactura = "SELECT Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.Total, InvoiceLine.InvoiceLineId, InvoiceLine.TrackId, InvoiceLine.UnitPrice FROM Invoice, InvoiceLine WHERE customerId =".$_SESSION['id']." AND Invoice.InvoiceId = InvoiceLine.InvoiceId;";
+	$selectFactura = "SELECT Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.Total, InvoiceLine.InvoiceLineId, InvoiceLine.TrackId, InvoiceLine.UnitPrice FROM Invoice, InvoiceLine WHERE CustomerId =".$_SESSION['id']." AND Invoice.InvoiceId = InvoiceLine.InvoiceId;";
 	$queryFactura = mysqli_query($db, $selectFactura);
 	
 	while($arrayFactura = mysqli_fetch_array($queryFactura, MYSQLI_ASSOC)) {
