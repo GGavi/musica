@@ -17,12 +17,9 @@ if (isset($_POST['carrito'])) {
 			if (insertarLineaInvoice($db)) {
 				
 				echo "La operacion se ha realizado correctamente";
-				/*
-				$datosCookie = array();
-				setcookie('carrito', serialize($datosCookie), time() + (86400 * 30), "/");
-				*/
-				unset($_COOKIE['carrito']);
-    			setcookie('carrito', '', time() - 3600, '/'); // empty value and old timestamp
+                $id = $_SESSION['id'];
+				unset($_COOKIE['carrito'.$id]);
+    			setcookie('carrito'.$id, '', time() - 3600, '/'); // empty value and old timestamp
 				mysqli_commit($db);
 			} else {
 				

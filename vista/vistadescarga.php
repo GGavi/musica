@@ -3,9 +3,13 @@
 require_once('../modelos/modelodescarga.php');
 require_once('../bd/config.php');
 
-if (isset($_COOKIE['carrito'])) {
+session_start();
+
+$id = $_SESSION['id'];
+
+if (isset($_COOKIE['carrito'.$id])) {
 	
-	$array = unserialize($_COOKIE['carrito']);
+	$array = unserialize($_COOKIE['carrito'.$id]);
 	var_dump($array);
 }
 

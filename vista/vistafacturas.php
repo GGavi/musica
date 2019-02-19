@@ -4,6 +4,8 @@ require_once('../bd/config.php');
 require_once('../modelos/modelohistorial.php');
 require_once('../modelos/modelofacturafecha.php');
 
+session_start();
+
 ?>
 
 <html>
