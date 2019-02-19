@@ -2,7 +2,7 @@
 
 function mostrarFechas($db, $fecha1, $fecha2) {
 	
-	$selectFactura = "SELECT Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.Total, InvoiceLine.InvoiceLineId, InvoiceLine.TrackId, InvoiceLine.UnitPrice FROM Invoice, InvoiceLine WHERE customerId =".$_SESSION['id']." AND Invoice.InvoiceId = InvoiceLine.InvoiceId AND Invoice.InvoiceDate BETWEEN '$fecha1' AND '$fecha2';";
+	$selectFactura = "SELECT Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.Total, InvoiceLine.InvoiceLineId, InvoiceLine.TrackId, InvoiceLine.UnitPrice FROM Invoice, InvoiceLine WHERE CustomerId =".$_SESSION['id']." AND Invoice.InvoiceId = InvoiceLine.InvoiceId AND Invoice.InvoiceDate BETWEEN '$fecha1' AND '$fecha2';";
 	$queryFactura = mysqli_query($db, $selectFactura);
 	$arrayFactura = mysqli_fetch_array($queryFactura, MYSQLI_ASSOC);
 	
