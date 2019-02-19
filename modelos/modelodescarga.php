@@ -4,7 +4,7 @@ function mostrarCanciones($db) {
 	
 	echo "Selecciona las canciones con el desplegable y el boton de a&ntilde;adir, finaliza la compra con comprar";
 	
-	$selectCancion = "SELECT TrackId, Name FROM track;";
+	$selectCancion = "SELECT TrackId, Name FROM Track;";
 	$queryCancion = mysqli_query($db, $selectCancion);
 	while ($arrayCancion = mysqli_fetch_array($queryCancion, MYSQLI_ASSOC)) {
 					
