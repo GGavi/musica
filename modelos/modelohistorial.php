@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 function mostrarFacturas($db) {
 	
 	$selectFactura = "SELECT Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.Total, InvoiceLine.InvoiceLineId, InvoiceLine.TrackId, InvoiceLine.UnitPrice FROM Invoice, InvoiceLine WHERE CustomerId =".$_SESSION['id']." AND Invoice.InvoiceId = InvoiceLine.InvoiceId;";

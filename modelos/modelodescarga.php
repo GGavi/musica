@@ -14,10 +14,11 @@ function mostrarCanciones($db) {
 
 function anadirCarrito($db, $cancion) {
 	
-	if (isset($_COOKIE['carrito'])) {
+    $id = $_SESSION['id'];
+	if (isset($_COOKIE['carrito'.$id])) {
 		
 		$datosCookie = array();
-		$datosCookie = unserialize($_COOKIE['carrito']);
+		$datosCookie = unserialize($_COOKIE['carrito'.$id]);
 			
 		if (in_array($cancion, $datosCookie)) {
 				
@@ -26,8 +27,8 @@ function anadirCarrito($db, $cancion) {
 		} else {
 				
 			array_push($datosCookie, $cancion);
-			setcookie('carrito', serialize($datosCookie), time() + (86400 * 30), "/");
-			var_dump(unserialize($_COOKIE['carrito']));
+			setcookie('carrito'.$id, serialize($datosCookie), time() + (86400 * 30), "/");
+			var_dump(unserialize($_COOKIE['carrito'.$id]));
 			header("location: ../vista/vistadescarga.php");
 		}
 		
@@ -36,8 +37,8 @@ function anadirCarrito($db, $cancion) {
 		
 		$carritoCanciones = array();
 		array_push($carritoCanciones, $cancion);
-		setcookie('carrito', serialize($carritoCanciones), time() + (86400 * 30), "/");
-		var_dump(unserialize($_COOKIE['carrito']));
+		setcookie('carrito'.$id, serialize($carritoCanciones), time() + (86400 * 30), "/");
+		var_dump(unserialize($_COOKIE['carrito'.$id]));
 		header("location: ../vista/vistadescarga.php");
 	}
 }
@@ -65,9 +66,10 @@ function insertarInvoice($db) {
 
 function insertarLineaInvoice($db) {
 	
+    $id = $_SESSION['id'];
 	$valido = true;
 	$insertInvoiceLine = mysqli_prepare($db, "INSERT INTO InvoiceLine(InvoiceLineId, InvoiceId, TrackId, UnitPrice, Quantity) VALUES (?,?,?,?,?);");
-	$datosCookie = unserialize($_COOKIE['carrito']);
+	$datosCookie = unserialize($_COOKIE['carrito'.$id]);
 	
 	for ($i = 0; $i < count($datosCookie); $i++) {
 		
@@ -99,8 +101,9 @@ function insertarLineaInvoice($db) {
 
 function calcularTotal($db) {
 	
+    $id = $_SESSION['id'];
 	$total = 0;
-	$datosCookie = unserialize($_COOKIE['carrito']);
+	$datosCookie = unserialize($_COOKIE['carrito'.$id]);
 	
 	for ($i = 0; $i < count($datosCookie); $i++) {
 		

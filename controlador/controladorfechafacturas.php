@@ -2,8 +2,6 @@
 
 require_once('../bd/config.php');
 
-session_start();
-
 $fecha1 = $_POST['fecha1'];
 $fecha2 = $_POST['fecha2'];
 

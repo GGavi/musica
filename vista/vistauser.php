@@ -9,5 +9,6 @@
 			<li><a href="../controlador/controladorhistfacturas.php">Visualizar historial de facturas</a></li>
 			<li><a href="pedirdatosfacfecha.php">Visualizar las facturas entre dos fechas determinadas</a></li>
 		</ul>
+		<a href="../controlador/controladorlogout.php">Cerrar sesion</a>
 	</body>
 </html>
